@@ -1,0 +1,11 @@
+node_modules/
+bin
+cache
+artifacts
+docs/index.html
+docs/main.js
+.env
+build/
+abi/
+.DS_Store
+.vscode
