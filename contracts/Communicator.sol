@@ -4,17 +4,14 @@ pragma solidity >=0.8.0 <0.9.0;
 contract Communicator {
 
     string public calendarTime;
-    address constant oracleAddress = address(0);
+    address constant oracleAddress = 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266; // account calling contract from listener
 
     error SenderNotOracle(address sender, address oracleAddress);
 
     /**
      * @dev Emitted to communicate with off-chain resource
      */
-    event Signal(
-        address indexed sender,
-        uint256 value
-    );
+    event Signal();
 
     /**
      * @dev Ensures only oracle node can set calendar time
@@ -26,12 +23,8 @@ contract Communicator {
             _;
      }
 
-    constructor () {}
-
-    function emitSignal(
-        uint256 value
-    ) external {
-        emit Signal(address(this), value);
+    function emitSignal() external {
+        emit Signal();
     }
 
     function setTime(
