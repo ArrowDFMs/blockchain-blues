@@ -17,6 +17,7 @@ function paddedTime(timeString) {
 }
 
 async function signalHandler() {
+    console.log("\nEvent received...")
     const currentdate = new Date()
     const datetime = paddedTime(currentdate.getDate().toString()) + "/"
                     + paddedTime((currentdate.getMonth()+1).toString())  + "/" 
@@ -26,6 +27,7 @@ async function signalHandler() {
                     + paddedTime(currentdate.getSeconds().toString())
 
     await communicator.setTime(datetime)
+    console.log("Callback function called...")
 }
 
 async function main() {

@@ -3,7 +3,7 @@ pragma solidity 0.8.9;
 
 contract Communicator {
     // STORAGE
-    string public calendarTime;
+    string public readableBlockTime;
     address constant oracleAddress = 0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199; // account calling contract from listener
 
     // ERRORS
@@ -13,7 +13,9 @@ contract Communicator {
     /**
      * @dev Emitted to communicate with off-chain resource
      */
-    event Signal();
+    event Signal(
+        uint256 currentBlocktime
+    );
 
     // MODIFIERS
     /**
@@ -28,17 +30,17 @@ contract Communicator {
 
     // CONSTRUCTOR
     constructor() {
-        calendarTime = "00/00/0000 00:00:00";
+        readableBlockTime = "00/00/0000 00:00:00";
     }
 
     // FUNCTIONS
     function emitSignal() external {
-        emit Signal();
+        emit Signal(block.timestamp);
     }
 
     function setTime(
-        string calldata _calendarTime
+        string calldata _readableBlockTime
     ) external onlyOracle {
-        calendarTime = _calendarTime;
+        readableBlockTime = _readableBlockTime;
     }
 }
