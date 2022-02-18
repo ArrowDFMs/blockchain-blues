@@ -19,3 +19,15 @@ Finally, test the off-chain communication circuit
 ```bash
 npx hardhat test --network localhost
 ```
+
+
+## Upradeability Project
+
+To get setup, cd into the Upgradeability directory and run
+```bash
+npm i
+```
+Then run
+```bash
+npx hardhat test
+```
